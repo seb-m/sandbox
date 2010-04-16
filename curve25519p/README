@@ -1,0 +1,7 @@
+
+=> Standalone
+  make && ./test
+
+=> With NaCL
+  edit smult.c and uncomment the last include directive
+  cp smult.c /nacl-path/crypto_scalarmult/curve25519/ref/
