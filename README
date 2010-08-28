@@ -1,0 +1,8 @@
+= SANDBOX =
+
+Various experimental codes, not actively maintained.
+
+curve25519p     -> scalar secret value randomization in Curve25519
+discover        -> scapy security networking code
+ecdsa_25519.py  -> implementation of ECDSA signature scheme on elliptic curve Curve25519
+pygments_cgit   -> colorize cgit output with pygments
