@@ -9,7 +9,9 @@
 #
 # 1- Install python-pygments and python-chardet
 # 2- Copy this script to /usr/local/bin/pygmentize_cgit.py (with exec rights)
-# 3- Copy 'pygments.css' (or edit CSS_FILE below) and 'head' into /var/www/cgit/
+# 3- Copy your 'pygments.css' (or edit CSS_FILE below) and associated 'head' 
+#    file under /var/www/cgit/. You can generate css styles with this script
+#    https://github.com/mhutchin/dump-pygments-css
 # 4- Add these statements under 'global settings' section of cgit
 #    configuration file /etc/cgitrc:
 #      # Include the content of this file verbatim in HEAD
@@ -17,6 +19,7 @@
 #      # Source code highlighting
 #      source-filter=/usr/local/bin/pygmentize_cgit.py
 #
+import os
 import sys
 
 import chardet
@@ -61,9 +64,7 @@ def pygmentize(fn, in_stream=None, out_stream=None):
         outencoding = chardet_encoding['encoding']
         formatter = pygments.formatters.get_formatter_by_name('html',
                                                               cssfile=CSS_FILE,
-                                                              outencoding=outencoding,
-                                                              noclobber_cssfile=True,
-                                                              style='default')
+                                                              outencoding=outencoding)
     except pygments.util.ClassNotFound:
         out_stream.write(in_data)
         return            
