@@ -25,7 +25,7 @@ import pygments.lexers
 import pygments.formatters
 
 CSS_FILE = '/var/www/cgit/pygments.css'
-
+DEBUG = False
 
 def pygmentize(fn, in_stream=None, out_stream=None):
     # If not provided in_stream will be read from stdin and out_stream
@@ -50,10 +50,11 @@ def pygmentize(fn, in_stream=None, out_stream=None):
         out_stream.write(in_data)
         return
 
-    # DEBUG: output detected encoding
-    #k = file('/tmp/encoding', 'w')
-    #k.write(str(chardet_encoding) + '\n')
-    #k.close()
+    if DEBUG:
+        # output detected encoding
+        k = file('/tmp/encoding', 'w')
+        k.write(str(chardet_encoding) + '\n')
+        k.close()
 
     formatter = None
     try:
